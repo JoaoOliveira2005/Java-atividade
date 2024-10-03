@@ -1,109 +1,25 @@
-import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        CadastroPessoas cadastro = new CadastroPessoas(5);
 
+        Data data1 = new Data(05, 12, 2004);
+        Data data2 = new Data(9, 4, 2005);
+        Data data3 = new Data(30, 9, 2005);
 
-interface Imposto {
-    double calcular(double valor);
-}
+        Cliente cliente = new Cliente("João Rizza", data1, 1234);
+        Funcionario funcionario = new Funcionario("Matheus ventura", data2, 3000f);
+        Gerente gerente = new Gerente("Pedro Calil", data3, 7000f, "TI");
 
+        cadastro.cadastraPessoa(cliente);
+        cadastro.cadastraPessoa(funcionario);
+        cadastro.cadastraPessoa(gerente);
 
-class ISS implements Imposto {
-    private static final double ALIQUOTA = 0.073;
+        // Imprimir o cadastro completo
+        cadastro.imprimeCadastro();
 
-
-    public double calcular(double valor) {
-        return valor * ALIQUOTA;
-    }
-}
-
-
-class ICMS implements Imposto {
-    private static final double ALIQUOTA = 0.132;
-
-    public double calcular(double valor) {
-        return valor * ALIQUOTA;
-    }
-}
-
-
-class IPI implements Imposto {
-    private static final double ALIQUOTA = 0.219;
-
-
-    public double calcular(double valor) {
-        return valor * ALIQUOTA;
-    }
-}
-
-
-class Produto {
-    private String nome;
-    private double precoBase;
-
-    public Produto(String nome, double precoBase)
-    {
-        this.nome = nome;
-        this.precoBase = precoBase;
-    }
-
-    String getNome()
-    {
-        return nome;
-    }
-
-    double getPrecoBase()
-    {
-        return precoBase;
-    }
-}
-
-
-class OperacaoComercial {
-    Produto produto;
-    double icms;
-    double ipi;
-    double valorTotal;
-
-    public OperacaoComercial(Produto produto) {
-        this.produto = produto;
-        calcularImpostos();
-    }
-
-    void calcularImpostos() {
-        ICMS icms = new ICMS();
-        IPI ipi = new IPI();
-        this.icms = icms.calcular(produto.getPrecoBase());
-        this.ipi = ipi.calcular(produto.getPrecoBase());
-        this.valorTotal = produto.getPrecoBase() + this.icms + this.ipi;
-    }
-
-    void exibirDetalhes() {
-        System.out.println("Item: " + produto.getNome());
-        System.out.println("Preço base: R$" + produto.getPrecoBase());
-        System.out.println("IPI: R$" + this.ipi);
-        System.out.println("ICMS: R$" + this.icms);
-        System.out.println("Valor total: R$" + this.valorTotal);
-    }
-}
-
-
- public class Main {
-     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-
-        System.out.print("Digite o nome do produto: ");
-        String nomeProduto = scanner.nextLine();
-        System.out.print("Digite o preço do produto: ");
-        double precoProduto = scanner.nextDouble();
-
-        Produto produto = new Produto(nomeProduto, precoProduto);
-
-
-        OperacaoComercial operacaoProduto = new OperacaoComercial(produto);
-
-        operacaoProduto.exibirDetalhes();
-
-        scanner.close();
+        // Acessando as pessoas pelo índice
+        cadastro.acessaPessoaPorIndice(1);  // Deve acessar Maria
+        cadastro.acessaPessoaPorIndice(3);  // Fora dos limites, lança exceção
     }
 }
 
