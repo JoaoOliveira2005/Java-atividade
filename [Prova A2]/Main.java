@@ -13,7 +13,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        // Inicializa o banco de dados
+
+        
         DBConnection.inicializarBancoDeDados();
 
         Scanner scanner = new Scanner(System.in);
