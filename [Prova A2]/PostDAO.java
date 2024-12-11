@@ -1,14 +1,21 @@
 package org.example.dao;
 
 import org.example.models.Post;
-import org.example.utils.DBConnection;
 
+import org.example.utils.DBConnection
+    
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
+
 import java.sql.SQLException;
+
 import java.util.ArrayList;
+
 import java.util.Date;
+
 import java.util.List;
 
 public class PostDAO {
@@ -29,6 +36,8 @@ public class PostDAO {
         }
     }
 
+
+    
     public void atualizarPost(Post post) {
         String sql = "UPDATE Post SET conteudo = ?, dataPublicacao = ? WHERE titulo = ? AND usuarioEmail = ?";
         try (Connection conn = DBConnection.getConnection();
@@ -46,6 +55,9 @@ public class PostDAO {
         }
     }
 
+
+
+    
     public void excluirPost(String titulo, String usuarioEmail) {
         String sql = "DELETE FROM Post WHERE titulo = ? AND usuarioEmail = ?";
         try (Connection conn = DBConnection.getConnection();
@@ -61,6 +73,8 @@ public class PostDAO {
         }
     }
 
+
+    
     public List<Post> listarPostsPorUsuario(String usuarioEmail) {
         List<Post> posts = new ArrayList<>();
         String sql = "SELECT * FROM Post WHERE usuarioEmail = ?";
@@ -81,4 +95,7 @@ public class PostDAO {
         return posts;
 
     }
+
+
+    
 }
