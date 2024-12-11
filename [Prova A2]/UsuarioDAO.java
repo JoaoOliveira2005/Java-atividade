@@ -1,14 +1,21 @@
 package org.example.dao;
 
 import org.example.models.Usuario;
+
 import org.example.models.Usuario.TipoUsuario;
+
 import org.example.utils.DBConnection;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
+
 import java.sql.SQLException;
+
 import java.util.ArrayList;
+
 import java.util.List;
 
 public class UsuarioDAO {
@@ -30,6 +37,9 @@ public class UsuarioDAO {
                         TipoUsuario.valueOf(rs.getString("tipoUsuario"))
                 );
             }
+
+
+            
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -59,6 +69,10 @@ public class UsuarioDAO {
             }
         }
     }
+
+
+
+    
 
     public void atualizarUsuario(Usuario usuario) {
         String sql = "UPDATE Usuario SET senha = ?, nome = ?, tipoUsuario = ? WHERE email = ?";
@@ -91,6 +105,10 @@ public class UsuarioDAO {
         }
     }
 
+
+
+    
+
     public List<Usuario> listarUsuarios() {
         List<Usuario> usuarios = new ArrayList<>();
         String sql = "SELECT * FROM Usuario";
@@ -116,4 +134,9 @@ public class UsuarioDAO {
         }
         return usuarios;
     }
+
+
+
+
+    
 }
