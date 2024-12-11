@@ -5,15 +5,19 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+
 public class DBConnection {
     private static final String URL = "jdbc:h2:~/test";
     private static final String USER = "sa";
     private static final String PASSWORD = "";
 
+    
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 
+
+    
     public static void inicializarBancoDeDados() {
         try (Connection conn = getConnection(); Statement stmt = conn.createStatement()) {
             String sqlUsuario = "CREATE TABLE IF NOT EXISTS Usuario (" +
@@ -23,6 +27,9 @@ public class DBConnection {
                     "tipoUsuario VARCHAR(50))";
             stmt.execute(sqlUsuario);
 
+
+
+            
             String sqlPost = "CREATE TABLE IF NOT EXISTS Post (" +
                     "titulo VARCHAR(255), " +
                     "conteudo TEXT, " +
