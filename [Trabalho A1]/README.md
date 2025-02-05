@@ -4,7 +4,7 @@ Este projeto é uma simulação da alocação de estudantes em turmas de uma ins
 
 O que o projeto faz?
 
-Este projeto resolve um problema comum nas instituições de ensino: como alocar os alunos corretamente nas turmas, de acordo com seus cursos e disciplinas. De forma resumida, o sistema faz o seguinte:
+Este projeto resolve um problema comum nas instituições de ensino: como alocar os alunos corretamente nas turmas, de acordo com seus cursos e disciplinas.
 
 Agrupa alunos conforme o curso e as disciplinas em que estão matriculados.
 Atribui professores às turmas, de acordo com a disciplina que eles lecionam.
